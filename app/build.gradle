@@ -1,0 +1,62 @@
+apply plugin: 'com.android.application'
+apply plugin: 'android-apt'
+def AAVersion = '3.3.2'                                                             //android annotion版本
+android {
+    compileSdkVersion 26
+    buildToolsVersion "26.0.1"
+    defaultConfig {
+        applicationId "com.liaoyun56.template"
+        minSdkVersion 21
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            buildConfigField "boolean", "SHOW_LOG", "false"
+            buildConfigField "String", "BASE_URL", '"aaa"'
+        }
+        debug {
+            buildConfigField "boolean", "SHOW_LOG", "true"
+            buildConfigField "String", "BASE_URL", '"aaa"'
+        }
+    }
+}
+
+
+/**
+ * AA注解Apt配置
+ */
+apt {
+    arguments {
+        androidManifestFile 'app/src/main/AndroidManifest.xml'
+        // if you have multiple outputs (when using splits), you may want to have other index than 0
+
+        // You can set optional annotation processing options here, like these commented options:
+        // logLevel 'INFO'
+        // logFile '/var/log/aa.log'
+
+    }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.0', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    compile 'com.android.support:appcompat-v7:26.+'
+    compile 'com.android.support.constraint:constraint-layout:1.0.0-alpha7'
+    testCompile 'junit:junit:4.12'
+    apt "org.androidannotations:androidannotations:$AAVersion"
+    //引入android annotation
+    compile "org.androidannotations:androidannotations-api:$AAVersion"
+    //引入android annotation
+    compile 'com.github.bumptech.glide:glide:3.7.0'
+    //引入glide
+    compile 'com.squareup.okhttp3:okhttp:3.8.1'
+    //引入okhttp
+    compile files('libs/gson-2.6.jar')
+}
