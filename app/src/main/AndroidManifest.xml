@@ -2,20 +2,26 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.liaoyun56.template">
 
+    <!--
+      继承了AppCompatActivity的Activity无法通过调用requestWindowFeature(Window.FEATURE_NO_TITLE)来隐藏标题栏,
+    将主题更改为Theme.AppCompat.Light.NoActionBar、
+    Theme.AppCompat.NoActionBar或T
+    heme.AppCompat.DayNight.NoActionBar中的一个，即可隐藏标题栏
+    -->
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppThemeNoActionBar">
         <activity android:name=".MainActivity_">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".activity.FirstActivity_"></activity>
     </application>
 
 </manifest>

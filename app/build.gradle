@@ -26,7 +26,6 @@ android {
     }
 }
 
-
 /**
  * AA注解Apt配置
  */
@@ -47,16 +46,16 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.0', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile 'com.android.support:appcompat-v7:26.+'
-    compile 'com.android.support.constraint:constraint-layout:1.0.0-alpha7'
-    testCompile 'junit:junit:4.12'
     apt "org.androidannotations:androidannotations:$AAVersion"
     //引入android annotation
     compile "org.androidannotations:androidannotations-api:$AAVersion"
     //引入android annotation
-    compile 'com.github.bumptech.glide:glide:3.7.0'
     //引入glide
-    compile 'com.squareup.okhttp3:okhttp:3.8.1'
     //引入okhttp
     compile files('libs/gson-2.6.jar')
+    compile 'com.android.support:appcompat-v7:26.+'
+    compile 'com.android.support.constraint:constraint-layout:1.0.0-alpha7'
+    compile 'com.github.bumptech.glide:glide:3.7.0'
+    compile 'com.squareup.okhttp3:okhttp:3.8.1'
+    testCompile 'junit:junit:4.12'
 }
